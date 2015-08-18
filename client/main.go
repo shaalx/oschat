@@ -40,8 +40,8 @@ func Client(conn net.Conn) {
 }
 
 func sendMsg(conn net.Conn) chan bool {
-	_msg := msg.OSMsg{Fromu: proto.String("jack"), Tou: proto.String("tom"), Content: proto.String("hello,tom")}
-	// _msg := msg.OSMsg{Fromu: proto.String("tom"), Tou: proto.String("jack"), Content: proto.String("hello,jack")}
+	// _msg := msg.OSMsg{Fromu: proto.String("jack"), Tou: proto.String("tom"), Content: proto.String("hello,tom")}
+	_msg := msg.OSMsg{Fromu: proto.String("tom"), Tou: proto.String("jack"), Content: proto.String("hello,jack")}
 	end := make(chan bool)
 	for {
 		// send

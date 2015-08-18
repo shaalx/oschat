@@ -8,14 +8,13 @@ import (
 
 func NewConnKeeper() *ConnKeeper {
 	return &ConnKeeper{
-		Conns:   make(map[string]*net.TCPConn),
-		RWMutex: &sync.RWMutex{},
+		Conns: make(map[string]*net.TCPConn),
 	}
 }
 
 type ConnKeeper struct {
 	Conns map[string]*net.TCPConn
-	*sync.RWMutex
+	sync.RWMutex
 }
 
 func (s *ConnKeeper) Login(username string, conn *net.TCPConn) error {
