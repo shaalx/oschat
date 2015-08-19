@@ -42,8 +42,9 @@ func (s *ConnKeeper) SendMsgTo(targetu string, content []byte) error {
 
 func (s *ConnKeeper) Get(username string) (*net.TCPConn, error) {
 	s.RLock()
-	defer s.RUnlock()
+	// defer s.RUnlock()
 	conn, ok := s.Conns[username]
+	s.RUnlock()
 	if ok {
 		return conn, nil
 	}
@@ -52,14 +53,16 @@ func (s *ConnKeeper) Get(username string) (*net.TCPConn, error) {
 
 func (s *ConnKeeper) Set(username string, conn *net.TCPConn) {
 	s.Lock()
-	defer s.Unlock()
+	// defer s.Unlock()
 	s.Conns[username] = conn
+	s.Unlock()
 }
 
 func (s *ConnKeeper) Delete(username string) {
 	s.Lock()
-	defer s.Unlock()
+	// defer s.Unlock()
 	delete(s.Conns, username)
+	s.Unlock()
 }
 
 func (s *ConnKeeper) NoLockerGet(username string) (*net.TCPConn, error) {
