@@ -44,6 +44,7 @@ func (s *ConnKeeper) Get(username string) (*net.TCPConn, error) {
 	s.RLock()
 	// defer s.RUnlock()
 	conn, ok := s.Conns[username]
+	fmt.Println("get:", username)
 	s.RUnlock()
 	if ok {
 		return conn, nil
@@ -54,6 +55,7 @@ func (s *ConnKeeper) Get(username string) (*net.TCPConn, error) {
 func (s *ConnKeeper) Set(username string, conn *net.TCPConn) {
 	s.Lock()
 	// defer s.Unlock()
+	fmt.Println("set:", username)
 	s.Conns[username] = conn
 	s.Unlock()
 }

@@ -2,6 +2,7 @@ package peers
 
 import (
 	"testing"
+	"time"
 )
 
 var Conn_Keeper *ConnKeeper
@@ -12,8 +13,15 @@ func init() {
 }
 
 func TestING(t *testing.T) {
-	conn, err := Conn_Keeper.Get("jack")
-	t.Log(conn, err)
+	for i := 0; i < 10; i++ {
+		go Conn_Keeper.Get("jack")
+	}
+	go Conn_Keeper.Set("tom", nil)
+	for i := 0; i < 10; i++ {
+		go Conn_Keeper.Get("tom")
+	}
+	time.Sleep(2e9)
+
 }
 
 func BenchmarkGet(b *testing.B) {
