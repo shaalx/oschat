@@ -2,6 +2,10 @@ package msg;
 
 message OSMsg{
 	required string fromu  = 1;
-	required string tou = 2;
-	required  string content = 3;
+	optional string tou = 2;
+	optional  string content = 3;
+}
+
+message Msg{
+	required string fromu = 1;
 }

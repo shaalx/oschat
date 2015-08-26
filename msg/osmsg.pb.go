@@ -10,6 +10,7 @@ It is generated from these files:
 
 It has these top-level messages:
 	OSMsg
+	Msg
 */
 package msg
 
@@ -22,8 +23,8 @@ var _ = math.Inf
 
 type OSMsg struct {
 	Fromu            *string `protobuf:"bytes,1,req,name=fromu" json:"fromu,omitempty"`
-	Tou              *string `protobuf:"bytes,2,req,name=tou" json:"tou,omitempty"`
-	Content          *string `protobuf:"bytes,3,req,name=content" json:"content,omitempty"`
+	Tou              *string `protobuf:"bytes,2,opt,name=tou" json:"tou,omitempty"`
+	Content          *string `protobuf:"bytes,3,opt,name=content" json:"content,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
 
@@ -48,6 +49,22 @@ func (m *OSMsg) GetTou() string {
 func (m *OSMsg) GetContent() string {
 	if m != nil && m.Content != nil {
 		return *m.Content
+	}
+	return ""
+}
+
+type Msg struct {
+	Fromu            *string `protobuf:"bytes,1,req,name=fromu" json:"fromu,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *Msg) Reset()         { *m = Msg{} }
+func (m *Msg) String() string { return proto.CompactTextString(m) }
+func (*Msg) ProtoMessage()    {}
+
+func (m *Msg) GetFromu() string {
+	if m != nil && m.Fromu != nil {
+		return *m.Fromu
 	}
 	return ""
 }
