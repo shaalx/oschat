@@ -3,7 +3,7 @@ package test
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
-	. "github.com/shaalx/oschat/msg"
+	. "github.com/toukii/oschat/msg"
 	"testing"
 
 	"reflect"

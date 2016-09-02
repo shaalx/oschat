@@ -3,7 +3,7 @@ package main
 import (
 	"code.google.com/p/goprotobuf/proto"
 	"fmt"
-	"github.com/shaalx/oschat/msg"
+	"github.com/toukii/oschat/msg"
 	"net"
 	"time"
 
